@@ -24,7 +24,7 @@ else:
 # Only run if user clicks button and has uploaded a resume
 if trigger_analysis and resume_file and job_description:
 
-    with st.spinner("Sending to AI..."):
+    with st.spinner("Analyzing..."):
         try:
             # Prepare the request
             files = {"resume": resume_file.getvalue()}
