@@ -31,7 +31,7 @@ if trigger_analysis and resume_file and job_description:
             data = {"job_description": job_description}
 
             response = requests.post(
-                "https://resume-evaluator-0mnn.onrender.com",
+                "https://resume-evaluator-0mnn.onrender.com/analyze",
                 files={"resume": (resume_file.name, resume_file, resume_file.type)},
                 data=data
             )

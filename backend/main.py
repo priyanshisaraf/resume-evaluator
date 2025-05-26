@@ -1,6 +1,9 @@
 from fastapi import FastAPI
-from routes import match
+from routes.match import router 
 
-app = FastAPI(title="AI Resume Matcher")
+app = FastAPI(
+    title="AI Resume Matcher",
+    version="1.0.0"
+)
 
-app.include_router(match.router)
+app.include_router(router)
