@@ -67,6 +67,18 @@ if trigger_analysis and resume_file and job_description:
                 else:
                     st.write("No improvements suggested.")
 
+                st.subheader("📄 AI-Generated Cover Letter")
+                if result.get("cover_letter"):
+                    st.text_area("Generated Cover Letter", result["cover_letter"], height=300)
+                    st.download_button(
+                        label="📥 Download Cover Letter (txt)",
+                        data=result["cover_letter"],
+                        file_name="cover_letter.txt",
+                        mime="text/plain"
+                    )
+                else:
+                    st.info("Cover letter not available.")
+
                 # Justification
                 st.subheader("Why this score\u2753")
                 st.write(result.get("justification", "No explanation provided."))
