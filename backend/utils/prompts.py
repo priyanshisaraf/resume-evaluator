@@ -96,19 +96,3 @@ def generate_job_description_if_needed(job_desc: str) -> (str, bool):
             return job_desc, False
     else:
         return job_desc, False
-
-# # Generate cover letter prompt
-def get_cover_letter_prompt(resume_text: str, job_desc: str) -> str:
-    return f"""
-You are a helpful assistant that writes personalized cover letters.
-
-Using the information from this resume and job description, write a concise, professional cover letter tailored for the job.
-
-Respond with plain text (no markdown or formatting).
-
-Resume:
-\"\"\"{resume_text}\"\"\"
-
-Job Description:
-\"\"\"{job_desc}\"\"\"
-"""
