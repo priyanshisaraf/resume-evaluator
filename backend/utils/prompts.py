@@ -76,7 +76,7 @@ def call_gemini(prompt: str, was_auto_generated: bool = False) -> dict:
     }
 
 # Generate job description from job title if too short
-def generate_job_description_if_needed(job_desc: str) -> (str, bool):
+def generate_job_description_if_needed(job_desc: str) -> tuple[str, bool]:
     if len(job_desc.split()) < 20:
         print("Job description too short \u2014 generating realistic one via Gemini.")
         expansion_prompt = f"Write a realistic 3-5 sentence job description for the role: '{job_desc}'."
