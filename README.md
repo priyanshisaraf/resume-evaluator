@@ -10,14 +10,16 @@ An AI-powered web app that analyzes resumes, scores them against job description
 - Upload your resume (PDF or DOCX)
 - Paste a job description or just a role title
 - AI evaluates match score (0–100)
-- Highlights missing skills
-- Suggests resume bullet improvements
+- Shows matched skills and missing job keywords
+- Rewrites resume bullets without inventing candidate experience
+- Flags ATS formatting and wording issues
+- Processes uploads in memory and marks analysis responses as non-cacheable
 
 ## Tech Stack
 
 - **Frontend:** Streamlit
 - **Backend:** FastAPI
-- **AI Model:** Gemini 1.5 Pro (Google Generative Language API)
+- **AI Model:** Gemini 3.1 Flash-Lite (configurable through `GEMINI_MODEL`)
 - **Text Parsing:** PyMuPDF, python-docx
 - **Hosting:** Render (API) + Streamlit Cloud (UI)
 - **Language:** Python 3.10+
@@ -66,6 +68,8 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+The frontend defaults to `http://localhost:8000`. Set `API_URL` to use a deployed backend.
+
 ---
 
 ## Deployment
@@ -83,7 +87,7 @@ streamlit run app.py
 - Point to `frontend/app.py`
 - Add secret via `secrets.toml` or Streamlit Cloud UI:
   ```toml
-  GEMINI_API_KEY = "your-api-key"
+  API_URL = "https://your-render-service.onrender.com"
   ```
 
 ---
@@ -93,6 +97,8 @@ streamlit run app.py
 | Key              | Description                     |
 |------------------|---------------------------------|
 | `GEMINI_API_KEY` | Required to access Gemini API   |
+| `GEMINI_MODEL`   | Optional backend model override |
+| `API_URL`        | Backend URL used by the frontend |
 
 ---
 
@@ -107,4 +113,3 @@ streamlit run app.py
 ## License
 
 This project is not currently licensed. If you'd like to contribute, reuse, or adapt this work, please contact the author for permissions or collaboration inquiries.
-
